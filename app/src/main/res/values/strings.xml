@@ -7,7 +7,16 @@
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
 
-    <string name="menu_home">Home</string>
-    <string name="menu_gallery">Gallery</string>
-    <string name="menu_slideshow">Slideshow</string>
+    <string name="menu_home">Menu Principal</string>
+    <string name="menu_gallery">Mis Compras</string>
+    <string name="menu_slideshow">Mis Reservas</string>
+    <string name="varBtnIngresar">Ingresar</string>
+    <string name="varTilPasswordHint">Contraseña</string>
+    <string name="varTilUsernameHint">Usuario</string>
+    <string name="menu_my_details">Mis datos</string>
+    <string name="menu_sales">Comprar</string>
+    <string name="menu_booking">Reservas</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="varBtnAñadirCarrito">Añadir al Carrito</string>
 </resources>

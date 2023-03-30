@@ -1,4 +1,4 @@
-package com.g4.dev.gosuesprortsapp.ui.home
+package com.g4.dev.gosuesprortsapp.ui.shop
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,11 +7,11 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import com.g4.dev.gosuesprortsapp.databinding.FragmentHomeBinding
+import com.g4.dev.gosuesprortsapp.databinding.FragmentComprasBinding
 
-class HomeFragment : Fragment() {
+class ShopFragment : Fragment() {
 
-    private var _binding: FragmentHomeBinding? = null
+    private var _binding: FragmentComprasBinding? = null
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -22,16 +22,12 @@ class HomeFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val homeViewModel =
-            ViewModelProvider(this).get(HomeViewModel::class.java)
+        val galleryViewModel =
+            ViewModelProvider(this).get(ShopViewModel::class.java)
 
-        _binding = FragmentHomeBinding.inflate(inflater, container, false)
+        _binding = FragmentComprasBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        val textView: TextView = binding.textHome
-        homeViewModel.text.observe(viewLifecycleOwner) {
-            textView.text = it
-        }
         return root
     }
 
