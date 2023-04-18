@@ -3,12 +3,18 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/nav_my_details">
+    app:startDestination="@id/nav_menu_principal">
+
+    <fragment
+        android:id="@+id/nav_menu_principal"
+        android:name="com.g4.dev.gosuesprortsapp.ui.mainFragment.MainFragment"
+        android:label="@string/menu_home"
+        tools:layout="@layout/fragment_main" />
 
     <fragment
         android:id="@+id/nav_my_details"
-        android:name="com.g4.dev.gosuesprortsapp.ui.booking.BookingFragment"
-        android:label="@string/menu_home"
+        android:name="com.g4.dev.gosuesprortsapp.ui.details.DetailsFragment"
+        android:label="@string/menu_my_details"
         tools:layout="@layout/fragment_my_details" />
 
     <fragment
@@ -19,7 +25,26 @@
 
     <fragment
         android:id="@+id/nav_booking"
-        android:name="com.g4.dev.gosuesprortsapp.ui.details.DetailsFragment"
+        android:name="com.g4.dev.gosuesprortsapp.ui.booking.BookingFragment"
         android:label="@string/menu_slideshow"
         tools:layout="@layout/fragment_booking" />
+    <fragment
+        android:id="@+id/nav_product_details"
+        android:name="com.g4.dev.gosuesprortsapp.ui.product.ProductDetailsFragment"
+        android:label="fragment_product_details"
+        tools:layout="@layout/fragment_product_details" />
+
+    <fragment
+        android:id="@+id/nav_confirm_sale"
+        android:name="com.g4.dev.gosuesprortsapp.ui.shop.confirmShop.ConfirmShopFragment"
+        android:label="fragment_confirm_sale"
+        tools:layout="@layout/fragment_confirm_shop" />
+    <fragment
+        android:id="@+id/nav_booking_history"
+        android:name="com.g4.dev.gosuesprortsapp.ui.booking.history.HistoryBookingFragment"
+        android:label="Historial de reservas"
+        tools:layout="@layout/fragment_history_booking" />
+
+
+
 </navigation>

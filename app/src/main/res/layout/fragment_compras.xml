@@ -9,30 +9,51 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recProducts"
         android:layout_width="match_parent"
-        android:layout_height="559dp"
-        android:layout_marginTop="21dp"
+        android:layout_height="635dp"
+        android:orientation="vertical"
+        android:padding="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/recCategories"
-        app:layout_constraintVertical_bias="0.981"
 
-        android:padding="20dp"
-        android:background="@color/black"
-        tools:listitem="@layout/item_product_category"
-
-        android:orientation="vertical"/>
+        tools:listitem="@layout/item_product_category" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recCategories"
-        android:layout_width="410dp"
-        android:layout_height="163dp"
+        android:layout_width="412dp"
+        android:layout_height="84dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        tools:listitem="@layout/item_category_card_view" />
 
+    <ProgressBar
+        android:id="@+id/productPgBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:pointerIcon="crosshair"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.5" />
 
-
-        android:orientation="horizontal"/>
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabConfirmarCompra"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_marginEnd="@dimen/fab_margin"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.952"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.884"
+        app:srcCompat="@drawable/ic_confirm_sale" />
 </androidx.constraintlayout.widget.ConstraintLayout>

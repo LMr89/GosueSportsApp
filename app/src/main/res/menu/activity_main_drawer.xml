@@ -5,6 +5,11 @@
 
     <group android:checkableBehavior="single">
         <item
+            android:id="@+id/nav_menu_principal"
+            android:icon="@drawable/baseline_newspaper_24"
+            android:title="@string/menu_principal"
+            />
+        <item
             android:id="@+id/nav_my_details"
             android:icon="@drawable/user_login"
             android:title="@string/menu_my_details"
@@ -13,9 +18,21 @@
             android:id="@+id/nav_shop"
             android:icon="@drawable/ic_shop"
             android:title="@string/menu_sales" />
-        <item
-            android:id="@+id/nav_booking"
-            android:icon="@drawable/ic_reserve"
-            android:title="@string/menu_booking" />
+
     </group>
+
+    <item android:title="Reservas" >
+        <menu>
+            <item
+                android:id="@+id/nav_booking"
+                android:icon="@drawable/ic_reserve"
+                android:title="@string/menu_booking" />
+            <item
+                android:id="@+id/nav_booking_history"
+                android:icon="@drawable/ic_booking_history"
+                android:title="@string/menu_booking_history" />
+
+        </menu>
+    </item>
+
 </menu>

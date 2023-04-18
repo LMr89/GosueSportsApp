@@ -5,7 +5,7 @@
     <string name="nav_header_title">Android Studio</string>
     <string name="nav_header_subtitle">android.studio@android.com</string>
     <string name="nav_header_desc">Navigation header</string>
-    <string name="action_settings">Settings</string>
+    <string name="cerrar_session">Cerrar Sesion</string>
 
     <string name="menu_home">Menu Principal</string>
     <string name="menu_gallery">Mis Compras</string>
@@ -15,8 +15,20 @@
     <string name="varTilUsernameHint">Usuario</string>
     <string name="menu_my_details">Mis datos</string>
     <string name="menu_sales">Comprar</string>
-    <string name="menu_booking">Reservas</string>
+    <string name="menu_booking">Registrar</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="varBtnAñadirCarrito">Añadir al Carrito</string>
+    <string name="menu_principal">Menu Principal</string>
+    <string name="confirmSaleTitle">Carrito de Compras</string>
+    <string name="valBtnConfirmSale">Proceder Compra</string>
+    <string name="varTilComputers">Escoge un Ordenador</string>
+    <string name="varReservaDate">Fecha y hora</string>
+    <string name="varReservaTime">Tiempo</string>
+    <string name="varBtnNewBooking">Registrar Reserva</string>
+    <string name="menu_booking_history">Historial</string>
+    <string name="varTilBookingDate">Fecha</string>
+    <string name="varBtnCancelBooking">Cancelar Reserva</string>
+    <string name="varBtnPayment">Agregar metodo de pago</string>
+    <string name="varCancelPaymentMethod">Cancelar Metodo de pago</string>
 </resources>

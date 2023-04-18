@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="151dp"
+    app:cardCornerRadius="7dp"
+    android:layout_marginTop="5dp"
+    >
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <TextView
+            android:id="@+id/tvNameProd"
+            android:layout_width="201dp"
+            android:layout_height="25dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="12dp"
+            android:text="TextView"
+            android:textAllCaps="false"
+            android:textStyle="bold|italic"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/btnQuitProduct"
+            android:layout_width="49dp"
+            android:layout_height="39dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="4dp"
+            android:text="Button"
+            app:icon="@drawable/ic_quit_product"
+            app:iconGravity="start"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.776"
+            app:layout_constraintStart_toEndOf="@+id/tvNameProd"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvPrice"
+            android:layout_width="97dp"
+            android:layout_height="22dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="24dp"
+            android:text="TextView"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvNameProd" />
+
+        <Button
+            android:id="@+id/btnMoreUnitsSale"
+            android:layout_width="49dp"
+            android:layout_height="46dp"
+            android:layout_marginStart="28dp"
+            android:layout_marginTop="4dp"
+            app:icon="@drawable/ic_add"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvPrice" />
+
+        <Button
+            android:id="@+id/btnLessUnitsSale"
+            android:layout_width="52dp"
+            android:layout_height="47dp"
+            android:layout_marginStart="13dp"
+            android:layout_marginTop="52dp"
+            app:icon="@drawable/ic_less"
+            app:layout_constraintStart_toEndOf="@+id/etUnitsChoseSale"
+            app:layout_constraintTop_toBottomOf="@+id/tvNameProd" />
+
+        <EditText
+            android:id="@+id/etUnitsChoseSale"
+            android:layout_width="86dp"
+            android:layout_height="51dp"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="52dp"
+            android:ems="10"
+            android:textAlignment="center"
+            app:layout_constraintStart_toEndOf="@+id/btnMoreUnitsSale"
+            app:layout_constraintTop_toBottomOf="@+id/tvNameProd" />
+
+        <TextView
+            android:id="@+id/tv_product_total"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="64dp"
+            android:layout_marginEnd="28dp"
+            android:text="TextView"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.051"
+            app:layout_constraintStart_toEndOf="@+id/btnLessUnits"
+            app:layout_constraintTop_toBottomOf="@+id/tvNameProd" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.cardview.widget.CardView>
