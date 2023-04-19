@@ -11,10 +11,9 @@ import android.view.View.OnClickListener
 import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
-import androidx.core.view.isVisible
-import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.findNavController
 import com.g4.dev.gosuesprortsapp.R
 import com.g4.dev.gosuesprortsapp.data.model.request.booking.BookingRequest
 import com.g4.dev.gosuesprortsapp.data.model.request.booking.IdOrdenador
@@ -98,8 +97,6 @@ class BookingFragment : Fragment(), OnClickListener, AdapterView.OnItemSelectedL
         }
     }
 
-
-
     private fun showTimePickerDialogDateTime() {
         val timePicker = TimePickerDialogFragment{time ->
             onTimeSelectedForDateTime(time)
@@ -107,7 +104,7 @@ class BookingFragment : Fragment(), OnClickListener, AdapterView.OnItemSelectedL
         timePicker.show(requireActivity().supportFragmentManager, "time")
     }
 
-    // TODO: wd
+
     private fun onTimeSelectedForDateTime(time: String) {
         val date = SimpleDateFormat("yyyy-MM-dd").format(Date())
         dateHourChoose = time.substring(0 , time.indexOf(":")).toInt()
@@ -130,9 +127,9 @@ class BookingFragment : Fragment(), OnClickListener, AdapterView.OnItemSelectedL
             }
         }
 
-        //viewModel.bookingResponse.observe(viewLifecycleOwner){
-        //    receiveResponseFromServer(it)
-        //}
+        viewModel.bookingResponse.observe(viewLifecycleOwner){
+            receiveResponseFromServer(it)
+        }
 
 
     }
@@ -194,6 +191,8 @@ class BookingFragment : Fragment(), OnClickListener, AdapterView.OnItemSelectedL
                 IdUsuario(4),
                 (PRICE_PER_HOUR * timeBookinHour) + (kotlin.math.round(((PRICE_PER_HOUR *(timeBookingMinute / 100)) * 10)/10) )
             )
+
+            //Log.i("FECHA PARA EL REGISTRO------", bookingRequest.toString())
             viewModel.postNewBooking(bookingRequest)
 
         }
@@ -206,7 +205,6 @@ class BookingFragment : Fragment(), OnClickListener, AdapterView.OnItemSelectedL
             MessageUtil.sendMessage(_binding!!.root,"Las reservas solo son de 9AM-9PM",MessageType.WARNING)
             return  false
         }
-
 
         val cal = Calendar.getInstance()
         val calendarUser = Calendar.getInstance()
@@ -232,12 +230,18 @@ class BookingFragment : Fragment(), OnClickListener, AdapterView.OnItemSelectedL
 
     }
 
-    private fun receiveResponseFromServer(commonResponseServer: CommonResponseServer){
-        if(commonResponseServer.httpStatus == 200){
-            MessageUtil.sendMessage(_binding!!.root,"La reserva fue registrada satisfactoriamente",MessageType.SUCCESS)
-            return
-        }
-        MessageUtil.sendMessage(_binding!!.root, commonResponseServer.mensaje,MessageType.ERROR)
+    private fun receiveResponseFromServer(commonResponseServer: CommonResponseServer?){
+      if (commonResponseServer!= null){
+          if(commonResponseServer.httpStatus == 201){
+              MessageUtil.sendMessage(_binding!!.root,"La reserva fue registrada satisfactoriamente",MessageType.SUCCESS)
+              Thread.sleep(1000)
+              requireActivity()
+                  .findNavController(R.id.nav_host_fragment_content_main)
+                  .navigate(R.id.nav_booking_history)
+              return
+          }
+          MessageUtil.sendMessage(_binding!!.root, commonResponseServer.mensaje,MessageType.ERROR)
+      }
     }
 
 }

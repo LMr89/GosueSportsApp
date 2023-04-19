@@ -18,6 +18,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Ingrese su numero YAPE"
+            app:counterEnabled="true"
+            app:counterMaxLength="9"
             app:endIconMode="clear_text"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
@@ -26,11 +28,11 @@
             app:layout_constraintVertical_bias="0.5"
             app:startIconDrawable="@drawable/ic_telefono">
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/etYapeNumber"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:inputType="number" />
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etYapeNumber"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:inputType="number" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -38,8 +40,10 @@
             style="?attr/textInputOutlinedDenseStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Ingrese su numero YAPE"
+            android:hint="Codigo de aprobacion YAPE"
 
+            app:counterEnabled="true"
+            app:counterMaxLength="6"
             app:endIconMode="clear_text"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -71,7 +75,20 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/varCancelPaymentMethod"
-            app:layout_constraintTop_toBottomOf="@+id/btnMakeSale"/>
+            app:layout_constraintTop_toBottomOf="@+id/btnMakeSale" />
+
+        <ProgressBar
+            android:id="@+id/pgYapeLoading"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.5"
+            android:visibility="gone"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.cardview.widget.CardView>

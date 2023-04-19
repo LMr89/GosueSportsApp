@@ -15,6 +15,11 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = ["android.arch.lifecycle.version": "1.1.1"]
+            }
+        }
     }
 
     buildTypes {
@@ -41,8 +46,8 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.6.1'
     implementation 'com.google.android.material:material:1.8.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
-    implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.6.0'
-    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.0'
+    implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.6.1'
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.1'
     implementation 'androidx.navigation:navigation-fragment-ktx:2.5.3'
     implementation 'androidx.navigation:navigation-ui-ktx:2.5.3'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
@@ -53,7 +58,7 @@ dependencies {
 
 //Glide
     implementation 'com.github.bumptech.glide:glide:4.15.0'
-    annotationProcessor 'com.github.bumptech.glide:compiler:4.13.2'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.15.0'
 
     // Retrofit
     implementation "com.squareup.retrofit2:retrofit:2.9.0"
@@ -63,6 +68,9 @@ dependencies {
 
     //lottie animation
     implementation 'com.airbnb.android:lottie:3.4.0'
+
+    implementation 'com.vmadalin:easypermissions-ktx:1.0.0'
+
 
 
 }

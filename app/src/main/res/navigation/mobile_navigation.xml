@@ -45,6 +45,12 @@
         android:label="Historial de reservas"
         tools:layout="@layout/fragment_history_booking" />
 
+    <fragment
+        android:id="@+id/nav_sale_history"
+        android:name="com.g4.dev.gosuesprortsapp.ui.shop.history.SaleHistoryFragment"
+        android:label="Historial de Compras"
+        tools:layout="@layout/fragment_sale_history" />
+
 
 
 </navigation>

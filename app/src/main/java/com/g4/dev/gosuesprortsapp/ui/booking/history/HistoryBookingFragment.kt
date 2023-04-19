@@ -57,7 +57,15 @@ class HistoryBookingFragment : Fragment(), OnTransferBookingData {
     }
     private fun initObservers(){
         historyViewModel.bookingList.observe(viewLifecycleOwner){
-            mainBinding.recBooking.adapter = BookingAdapter(it,this)
+            if (it.isEmpty()){
+                mainBinding.tvBookingMessage.isVisible = true
+            }
+            else{
+                mainBinding.tvBookingMessage.isVisible = false
+                mainBinding.recBooking.adapter = null
+                mainBinding.recBooking.adapter = BookingAdapter(it,this)
+            }
+
 
         }
         historyViewModel.responseServer.observe(viewLifecycleOwner){
@@ -75,6 +83,7 @@ class HistoryBookingFragment : Fragment(), OnTransferBookingData {
 
     override fun onTranserData(bookingId: Int) {
         historyViewModel.cancelBooking(bookingId)
+
         historyViewModel.getBookings()
     }
 

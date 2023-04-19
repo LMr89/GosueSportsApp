@@ -14,12 +14,21 @@
             android:icon="@drawable/user_login"
             android:title="@string/menu_my_details"
             />
-        <item
-            android:id="@+id/nav_shop"
-            android:icon="@drawable/ic_shop"
-            android:title="@string/menu_sales" />
+
 
     </group>
+    <item android:title="Compras">
+        <menu>
+            <item
+                android:id="@+id/nav_shop"
+                android:icon="@drawable/ic_shop"
+                android:title="@string/menu_sales" />
+            <item
+                android:id="@+id/nav_sale_history"
+                android:icon="@drawable/ic_booking_history"
+                android:title="@string/menu_shop_history" />
+        </menu>
+    </item>
 
     <item android:title="Reservas" >
         <menu>

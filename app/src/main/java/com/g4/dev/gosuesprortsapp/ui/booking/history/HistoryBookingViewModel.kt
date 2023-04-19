@@ -23,6 +23,7 @@ class HistoryBookingViewModel : ViewModel() {
 
     fun getBookings(){
        viewModelScope.launch {
+           bookingList.postValue(emptyList())
            isLoading.postValue(true)
            val idUsuario =
                GosueSportApplicationClass.SHARED_PREFERENCE_MANAGER.getPreference(
@@ -41,6 +42,7 @@ class HistoryBookingViewModel : ViewModel() {
             isLoading.postValue(true)
             val response = cancelBookingUseCase(bookingId)
             responseServer.postValue(response)
+
             isLoading.postValue(false)
 
         }

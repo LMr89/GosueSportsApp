@@ -9,13 +9,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.View.OnClickListener
 import androidx.fragment.app.DialogFragment
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
+import com.g4.dev.gosuesprortsapp.MainActivity
 import com.g4.dev.gosuesprortsapp.R
 import com.g4.dev.gosuesprortsapp.databinding.ConfirmSaleDialogBinding
 import com.g4.dev.gosuesprortsapp.databinding.PaymentDialogBinding
 
 class PaymentDialog (
-
+        val onNotifiyForLocalSale : (confirm:Boolean) -> Unit
     ): DialogFragment(), OnClickListener {
 
         private lateinit var  mBinding: PaymentDialogBinding
@@ -23,17 +25,15 @@ class PaymentDialog (
         lateinit var  cardPaymenDialog: CardPaymenDialog
         lateinit var  yapePaymentDialog: YapePaymentDialog
 
+
         override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
             mBinding = PaymentDialogBinding.inflate(LayoutInflater.from(context))
             val builder = AlertDialog.Builder(requireActivity())
             builder.setView(mBinding.root)
 
-
-
-            isCancelable = false
-
             val dialog = builder.create()
             dialog.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+
             return dialog
         }
 
@@ -41,6 +41,7 @@ class PaymentDialog (
         super.onResume()
         initDialogs()
         initListeners()
+        setObserbers()
     }
 
     private fun initDialogs(){
@@ -53,21 +54,29 @@ class PaymentDialog (
         mBinding.btnCardPayment.setOnClickListener(this)
         mBinding.btnYapePayment.setOnClickListener(this)
     }
+    private fun setObserbers(){
+
+    }
+
     override fun onClick(v: View) {
         when(v.id){
 
             R.id.btnCardPayment -> {
 
                 cardPaymenDialog.show(parentFragmentManager, "cardDialog")
+                dismiss()
 
             }
             R.id.btnYapePayment ->{
 
                 yapePaymentDialog.show(parentFragmentManager, "cardYape")
+                dismiss()
 
             }
             R.id.btnStorePayment -> {
-
+                TemporalPaymentData.IS_ON_STORE_PAYMENT= true
+                onNotifiyForLocalSale(true)
+                dismiss()
 
             }
 

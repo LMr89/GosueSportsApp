@@ -31,8 +31,8 @@ class BookingAdapter(val bookigList: List<Booking>,val onTransferBookingData: On
 
                 btnCancelBooking.setOnClickListener{
                     onTransferBookingData.onTranserData(bookingId = booking.idReserva)
-                }
 
+                }
 
                 etBookingDate.setText(booking.fechaInicio)
                 etBookingUsuario.setText(booking.usuario)
@@ -44,6 +44,7 @@ class BookingAdapter(val bookigList: List<Booking>,val onTransferBookingData: On
                     return
                 }
                 etBookingEstate.setText("Por Ir al local")
+                btnCancelBooking.isVisible = true
 
 
 

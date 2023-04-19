@@ -17,7 +17,7 @@ class BookingViewModel : ViewModel() {
 
     val computerList = MutableLiveData<List<String>>()
     val actualDate = MutableLiveData<String>()
-    val bookingResponse = MutableLiveData<CommonResponseServer>()
+    var bookingResponse = MutableLiveData<CommonResponseServer?>()
     var isLoading = MutableLiveData<Boolean>()
 
     init {
@@ -41,10 +41,9 @@ class BookingViewModel : ViewModel() {
 
     fun postNewBooking(bookingRequest: BookingRequest){
         viewModelScope.launch {
-           postNewBookingUseCaseCase(bookingRequest)
-
-
+            bookingResponse.postValue(  postNewBookingUseCaseCase(bookingRequest))
         }
+       //bookingResponse =  postNewBookingUseCaseCase.postNewBookingCallBack(bookingRequest)
     }
 
     private fun returnOnlyId(computer: Computer):String{
