@@ -7,6 +7,7 @@ import android.view.View
 import android.view.View.OnClickListener
 import android.view.ViewGroup
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.g4.dev.gosuesprortsapp.R
 import com.g4.dev.gosuesprortsapp.core.entity.Product
 import com.g4.dev.gosuesprortsapp.data.network.repository.sale.ProductSale
@@ -78,7 +79,10 @@ class ProductDetailsFragment : Fragment(), OnClickListener {
 
             Glide
                 .with(requireActivity().applicationContext)
+
                 .load(choseProduct.imgUrl)
+                .diskCacheStrategy(DiskCacheStrategy.ALL)
+                .fitCenter()
                 .into(imgProduct)
         }
 

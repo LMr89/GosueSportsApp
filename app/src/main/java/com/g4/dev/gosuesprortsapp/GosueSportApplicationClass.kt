@@ -21,16 +21,19 @@ class GosueSportApplicationClass: Application() {
         lateinit var  JWT_MANGER : JwtManager
         lateinit var  SHARED_PREFERENCE_MANAGER: SharedPreferenceManager
         lateinit var  LOADING_ALERT_DIALOG:LoadingAlertDialog
+        var  CONFIRM_SALE_SUCCESSFULL:Boolean = false
 
     }
 
 
     override fun onCreate() {
         super.onCreate()
+        CONFIRM_SALE_SUCCESSFULL = false
         SHARED_PREFERENCES_INSTANCE = getSharedPreferences(SHARED_PREFERENCE_NAME, Context.MODE_PRIVATE)
         INSTANCE = this
         JWT_MANGER = JwtManager(SHARED_PREFERENCES_INSTANCE)
         SHARED_PREFERENCE_MANAGER  = SharedPreferenceManager(SHARED_PREFERENCES_INSTANCE)
         LOADING_ALERT_DIALOG = LoadingAlertDialog()
+        CONFIRM_SALE_SUCCESSFULL = false
     }
 }

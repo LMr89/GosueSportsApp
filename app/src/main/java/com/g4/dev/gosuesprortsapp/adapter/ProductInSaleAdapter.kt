@@ -29,7 +29,7 @@ class ProductInSaleAdapter(val listProducts:List<ProductSale>,val  onNotifyChang
                 val index = SaleTemporal.productsForSale.indexOf(productSale)
                 tvNameProd .text = productSale.idProduct.nombre
                 tvPrice.text = "S/.${productSale.idProduct.precioUnitario}"
-                tvProductTotal.text = "S/.${productSale.idProduct.precioUnitario * productSale.stockChose}"
+                tvProductTotal.text = "S/.${((productSale.idProduct.precioUnitario * productSale.stockChose) * 10) / 10}"
                 etUnitsChoseSale.setText(productSale.stockChose.toString())
 
                 btnQuitProduct.setOnClickListener{

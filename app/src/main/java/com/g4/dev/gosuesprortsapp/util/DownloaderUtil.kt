@@ -8,8 +8,4 @@ import androidx.core.content.ContextCompat.getSystemService
 
 class DownloaderUtil (){
 
-
-
-
-
 }

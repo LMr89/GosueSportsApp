@@ -4,20 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.activity.LoginActivity">
+    tools:context=".ui.activity.LoginActivity"
+    android:background="@drawable/img_login2">
 
-
-    <ImageView
-        android:id="@+id/imgLogin"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:src="@drawable/img_login2"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
 
     <ImageView
         android:id="@+id/imgGosue"
@@ -59,7 +48,9 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etUserameLogin"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" />
+                android:layout_height="match_parent"
+                android:textColor="@color/white"
+                android:gravity="center"/>
 
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -80,7 +71,9 @@
                 android:id="@+id/etPasswordLogin"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:inputType="textPassword" />
+                android:inputType="textPassword"
+                android:textColor="@color/white"
+                android:gravity="center"/>
 
 
         </com.google.android.material.textfield.TextInputLayout>

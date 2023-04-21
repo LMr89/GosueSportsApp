@@ -26,6 +26,8 @@ class CardPaymenDialog (
     lateinit var mainActivity:MainActivity
     lateinit var  paymentViewModel :PaymentViewModel
 
+    var isDialogInitialized = true
+
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         mBinding = CardPaymentDialogBinding.inflate(LayoutInflater.from(context))
         val builder = AlertDialog.Builder(requireActivity())
@@ -46,7 +48,7 @@ class CardPaymenDialog (
 
     override fun onResume() {
         super.onResume()
-
+        isDialogInitialized = true
         setObservers()
     }
 
@@ -68,13 +70,14 @@ class CardPaymenDialog (
     }
 
     private fun dismissDialogWhenIsAuthorized(close:Boolean){
-        if (close){
-            TemporalPaymentData.IS_ON_STORE_PAYMENT = false
-            dismiss()
-        }else{
-            MessageUtil.sendMessage(mBinding.root,"Tarjeta invalida", MessageType.WARNING)
+        if (!isDialogInitialized){
+            if (close){
+                TemporalPaymentData.IS_ON_STORE_PAYMENT = false
+                dismiss()
+            }else{
+                MessageUtil.sendMessage(mBinding.root,"Tarjeta invalida", MessageType.WARNING)
+            }
         }
-
     }
 
     private  fun convertUserInputIntoClass():CreditCardTokenRequest?{
@@ -131,6 +134,7 @@ class CardPaymenDialog (
                 dismiss()
             }
             R.id.btnAddCarForSale -> {
+                isDialogInitialized = false
                 if (convertUserInputIntoClass() != null){
                     sendForApiResponse(convertUserInputIntoClass()!!)
                 }

@@ -25,6 +25,8 @@ class YapePaymentDialog (
     lateinit var mainActivity: MainActivity
     lateinit var  paymentViewModel :PaymentViewModel
 
+    var isDialogInitialized = true
+
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         mBinding = YapePaymentDialogBinding.inflate(LayoutInflater.from(context))
         val builder = AlertDialog.Builder(requireActivity())
@@ -45,6 +47,7 @@ class YapePaymentDialog (
     override fun onResume() {
         super.onResume()
         setListeners()
+        isDialogInitialized = true
         setObservers()
     }
 
@@ -60,12 +63,15 @@ class YapePaymentDialog (
 
     }
     private fun dismissDialogWhenIsAuthorized(close:Boolean){
-        if (close){
-            TemporalPaymentData.IS_ON_STORE_PAYMENT = false
-            dismiss()
-        }else{
-            MessageUtil.sendMessage(mBinding.root,"Yape invalido", MessageType.WARNING)
+        if (!isDialogInitialized){
+            if (close){
+                TemporalPaymentData.IS_ON_STORE_PAYMENT = false
+                dismiss()
+            }else{
+                MessageUtil.sendMessage(mBinding.root,"Yape invalido", MessageType.WARNING)
+            }
         }
+
 
     }
 
@@ -105,6 +111,7 @@ class YapePaymentDialog (
                 dismiss()
             }
             R.id.btnMakeSale -> {
+                isDialogInitialized = false
                 if (convertUserInputIntoClass() != null){
                     sendForApiResponse(convertUserInputIntoClass()!!)
                 }

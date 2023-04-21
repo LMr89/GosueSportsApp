@@ -14,6 +14,7 @@ import androidx.navigation.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.g4.dev.gosuesprortsapp.GosueSportApplicationClass
+import com.g4.dev.gosuesprortsapp.MainActivity
 import com.g4.dev.gosuesprortsapp.R
 import com.g4.dev.gosuesprortsapp.adapter.CategoryAdapter
 import com.g4.dev.gosuesprortsapp.adapter.OnCategoryClickListener
@@ -23,6 +24,8 @@ import com.g4.dev.gosuesprortsapp.core.entity.Product
 import com.g4.dev.gosuesprortsapp.data.network.repository.sale.SaleTemporal
 import com.g4.dev.gosuesprortsapp.databinding.FragmentComprasBinding
 import com.g4.dev.gosuesprortsapp.ui.product.ProductDetailsFragment
+import com.g4.dev.gosuesprortsapp.ui.shop.paymentDialog.PaymentViewModel
+import com.g4.dev.gosuesprortsapp.ui.shop.paymentDialog.TemporalPaymentData
 import com.g4.dev.gosuesprortsapp.util.messages.MessageType
 import com.g4.dev.gosuesprortsapp.util.messages.MessageUtil
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
@@ -31,6 +34,7 @@ class ShopFragment : Fragment() , OnCategoryClickListener,OnTransferProductListe
 
     private var _binding: FragmentComprasBinding? = null
     lateinit var showViewModel: ShopViewModel
+
 
 
     var FIRST_ID_CATEGORY_TO_INIT = 4
@@ -49,6 +53,7 @@ class ShopFragment : Fragment() , OnCategoryClickListener,OnTransferProductListe
 
         _binding = FragmentComprasBinding.inflate(inflater, container, false)
         val root: View = binding.root
+
         setUpRecyclerView()
         setUpListener()
         return root
@@ -89,6 +94,7 @@ class ShopFragment : Fragment() , OnCategoryClickListener,OnTransferProductListe
         showViewModel.isLoading.observe(viewLifecycleOwner){showAlert->
                 binding.productPgBar.isVisible = showAlert
         }
+
     }
 
     override fun onResume() {
@@ -96,12 +102,19 @@ class ShopFragment : Fragment() , OnCategoryClickListener,OnTransferProductListe
         setUpObservers()
         showViewModel.getAllCategories()
 
+        if (TemporalPaymentData.PAYMENT_SUCCESSFULLY){
+            //MessageUtil.sendMessage(binding.root, "Venta Exitosa", MessageType.SUCCESS)
+            TemporalPaymentData.PAYMENT_SUCCESSFULLY = false
+        }
+
     }
 
     override fun onStart() {
         super.onStart()
         Log.i("FIRST ID CATEGORY", FIRST_ID_CATEGORY_TO_INIT.toString())
         showViewModel.getProductsByCategory(FIRST_ID_CATEGORY_TO_INIT)
+
+
     }
 
     override fun onDestroyView() {
@@ -117,6 +130,7 @@ class ShopFragment : Fragment() , OnCategoryClickListener,OnTransferProductListe
         Log.i("ID CATEGORIA",idCategory.toString())
            showViewModel.getProductsByCategory(idCategory)
     }
+
 
 
 

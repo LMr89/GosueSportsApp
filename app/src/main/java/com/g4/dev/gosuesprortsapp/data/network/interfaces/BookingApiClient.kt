@@ -18,10 +18,13 @@ interface BookingApiClient {
     @POST(RetrofitUrlConstants.POST_NEW_BOOKING)
     suspend fun  postNewBooking(@Body booking:BookingRequest):Response<CommonResponseServer>
 
+
     @POST(RetrofitUrlConstants.POST_NEW_BOOKING)
      fun  postNewBookingCall(@Body booking:BookingRequest):Call<CommonResponseServer>
+
     @GET(RetrofitUrlConstants.GET_BOOKING_BY_USER_ID_URL)
     suspend fun  getBookingByUserId(@Query("idUsuario") userId:Int):Response<List<Booking>>
+
 
     @DELETE(RetrofitUrlConstants.CANCEL_BOOKING_URL+"{id}")
     suspend fun  cancelBooking(@Path("id") bookinId:Int):Response<CommonResponseServer>

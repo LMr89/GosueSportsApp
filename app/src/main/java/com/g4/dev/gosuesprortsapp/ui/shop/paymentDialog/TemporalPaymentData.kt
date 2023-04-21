@@ -4,4 +4,5 @@ object TemporalPaymentData {
 
     var SALE_AMOUNT:Long = 0
     var IS_ON_STORE_PAYMENT:Boolean = false
+    var PAYMENT_SUCCESSFULLY = false
 }

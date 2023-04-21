@@ -44,6 +44,7 @@ class ConfirmShopViewModel : ViewModel() {
         for ( prod in SaleTemporal.productsForSale){
             mSubTotal += (prod.idProduct.precioUnitario * prod.stockChose)
         }
+        mSubTotal = (mSubTotal * 10) / 10
         subtotalMount.postValue(
             mSubTotal
 

@@ -10,6 +10,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.View.OnClickListener
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 import androidx.fragment.app.DialogFragment
@@ -114,7 +115,9 @@ class ConfirmShopFragment : Fragment() ,OnNotifyChange,OnClickListener{
 
         confirmShopViewModel.isSaleSuccessful.observe(viewLifecycleOwner){success ->
             if (success){
-                MessageUtil.sendMessage(mainBinding.root, "Venta Registrada con exito", MessageType.SUCCESS)
+                TemporalPaymentData.PAYMENT_SUCCESSFULLY = true
+                Toast.makeText(activity, "Venta exitosa", Toast.LENGTH_LONG).show()
+
                 resetTemporalSale()
                 returnToShopFragment()
             }else{
@@ -125,9 +128,9 @@ class ConfirmShopFragment : Fragment() ,OnNotifyChange,OnClickListener{
 
         paymentViewModel.isAuthorized.observe(mainActivity){authorized ->
             if (authorized){
-                MessageUtil.sendMessage(mainBinding.root, "Metodo de pago aprobado", MessageType.SUCCESS)
                 changeButtonColor(authorized)
                 isAuthorizedForSale = authorized
+                showMessage()
             }
         }
 
@@ -144,14 +147,10 @@ class ConfirmShopFragment : Fragment() ,OnNotifyChange,OnClickListener{
                     "appChefsito@gmail.com",
                     1,
                     Metadata("ORD-${SimpleDateFormat("ddMMyyyyHHmmss").format(Date())}")
-
                 )
-
-
             }
-
-
         }
+
         paymentViewModel.isChargeSaleSuccess.observe(mainActivity){success ->
             if (success){
                 createSaleForServiceWeb()
@@ -161,6 +160,10 @@ class ConfirmShopFragment : Fragment() ,OnNotifyChange,OnClickListener{
         paymentViewModel.isOnLocalPayment.observe(mainActivity){changeColor ->
             changeButtonColor(changeColor)
         }
+    }
+
+    private fun showMessage(){
+       // MessageUtil.sendMessage(mainBinding.root, "Metodo de pago aprobado", MessageType.SUCCESS)
     }
 
     private fun resetTemporalSale(){

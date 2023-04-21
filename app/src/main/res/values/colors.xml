@@ -12,4 +12,6 @@
     <color name="snackbarexito">#0CEC15</color>
     <color name="snackbaradvertencia">#FF9800</color>
     <color name="item_category_color">#F1DB1D</color>
+
+    <color name="common_app_color">#D0C0C1</color>
 </resources>
